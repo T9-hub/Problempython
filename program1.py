@@ -1,4 +1,4 @@
-# #Problem-01: 
+#Problem-01:
 # # Find Multiples of Three
 # # รับ start และ end แล้วหาเลขทุกตัวในช่วงนี้ที่หารด้วย 3 ลงตัว
 def find_number(start,end):
