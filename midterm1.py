@@ -1,0 +1,82 @@
+# # #   find_missing_number
+# #     หาผลต่างร่วม 2 4  8  d = 2 , ตัวที่หายไปคือ 2
+#   รับ list ของตัวเลขเข้ามา หาว่าลำดับไหนหายไป 
+#   ถ้ามีเลขหาย return ค่านั้นออกไป
+#   ถ้าไม่มีค่าหาย คืนค่าเป็น None  หรือ -1 ตามโจทย์กำหนด
+
+def find_missing_number(seq:list):
+    
+    # ให้ n = ความยาวของ list ตัวเลขที่รับเข้ามา
+    n=len(seq)
+    # ค่าน้อยกว่า 3 ออกไปเลย
+    if n<3:
+        return None    
+    # ไม่น้อยกว่า 3 มาทำต่อ
+        # หาผลต่าวร่วม  หารจำนวนเต็มด้วย  จำนวนช่วงทั้งหมด
+    total = seq[-1] - seq[0] #คำนวน พจสุดท้าย - พจแรก
+    d = total // n        # หลังจากนั้นเอามาหารจำนวนเต็มด้วย ช่วงทั้งหมดของ list
+    # ตัวอย่าง: หาก Input คือ [2, 4, 8, 10] 
+    # (n = 4)
+    # total_diff = 10 - 2 = 8 
+    # d = 8 // 4 = 2(n) (ระยะห่างที่ถูกต้องคือ 2)
+    
+
+    # 2 ลูปตรวจ หาตำแหน่ง เเละคืนค่าที่หายไป
+    # วนลูปตั้งแต่ดรรชนี 0 จนถึงตัวก่อนสุดท้าย
+    for i in range(n-1):
+        # วนดูเลขทีละตัวของ seq
+        # คำนวณ ของตัวถัดไป โดยเอาตัวปัจจุบัน 
+        # (sequence[i])  บวกด้วยระยะห่างปกติ (d)
+        expected_next = seq[i] + d
+        
+        # ตรวจสอบว่าตัวถัดไปใน list จริงๆ (seq+1) 
+        # ไม่ตรงกับค่าที่ควรจะเป็นใช่หรือไม่
+        # ถ้าไม่ตรง แสดงว่าเจอจุดที่มีตัวเลขหายไป จึงคืนค่า expected_next
+        if seq[i+1] != expected_next:
+            return expected_next
+    
+    
+    # หากวนลูปจนจบครบทุกคู่แล้วไม่พบความผิดปกติ
+    return None
+
+data1 = [2, 6, 8, 10]
+result1 = find_missing_number(data1)
+print("ตัวที่หายไปได้แก่",result1)  # Output: 4
+
+
+
+
+
+
+
+def find_missing_number(seq:list):
+    
+    n = len(seq)
+    
+    if n < 3:
+        return None
+    
+    # หาผลต่างรวมของ list ที่รับเข้ามา
+    
+    total = seq[-1] - seq[0]
+    differnce  = total // n
+    
+    
+    print(f"ผลต่างร่วม = {differnce} ")
+    
+    for i in range(n-1):
+        
+        excepted_next = seq[i] + differnce
+        
+        if seq[i+1] != excepted_next:
+            return excepted_next
+        
+    return None
+
+data = [4, 8,12, 16]
+
+
+result = find_missing_number(data)
+
+
+
