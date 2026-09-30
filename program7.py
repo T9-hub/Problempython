@@ -25,6 +25,6 @@ while True:
             print(" " * (rows - i) + "*" * (2 * i - 1))
             
         print("-" * 30 + "\n")
-
+        print()
     except ValueError:
         print("ข้อผิดพลาด: กรุณากรอกเฉพาะตัวเลขจำนวนเต็มเท่านั้น!\n")
